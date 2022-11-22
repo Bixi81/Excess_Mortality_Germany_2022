@@ -118,4 +118,4 @@ axis.Date(1,at=all$date,labels=format(all$date,"%Y-%m"),las=2, cex.axis = 0.75)
 
 ## Results and Conclusion
 
-![excess_deaths](excess_deaths.jpg)
+![excess_deaths](excess_mortality.JPG)
