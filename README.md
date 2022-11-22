@@ -72,5 +72,5 @@ summary(reg)
 The OLS model essentially 
 
 ```math
-SE = \frac{\sigma}{\sqrt{n}}
+y_i = \beta_0 + \beta_1 w_i + u_i
 ```
