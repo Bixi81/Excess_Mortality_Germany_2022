@@ -118,6 +118,6 @@ axis.Date(1,at=all$date,labels=format(all$date,"%Y-%m"),las=2, cex.axis = 0.75)
 
 ## Results and Conclusion
 
-The results show that we saw partly high excess mortality in the winter 2020/21 as well as 2021/22 and a very low excess mortality in early spring 2021, likely as a result of the lockdown and attributable to the fact that the flu-season often extends to March and hitted hard in March 2018 (in the baseline period). We also see relatively high excess mortality towards the end of the year 2022. Overall, excess mortality seems to be somewhat higher since the start of Covid compared to the baseline period of 2016 to 2019.
+The results show that we saw partly high excess mortality in the winter 2020/21 as well as 2021/22 and a very low excess mortality in early spring 2021, likely as a result of the lockdown and attributable to the fact that the flu-season often extends to March and hitted hard in March 2018 (in the baseline period). We also see relatively high excess mortality towards the end of the year 2022. Overall, excess mortality is somewhat higher on average since the start of Covid compared to the baseline period of 2016 to 2019.
 
 ![excess_deaths](excess_mortality.JPG)
