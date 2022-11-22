@@ -1,4 +1,4 @@
-# Analysis of Excess Mortality in Germany 2016-2022 using R
+# Analysis of Excess Mortality in Germany 2016-2022 using (base) R
 
 ## Introduction
 Mortality varies within each year and also across years. The Covid-19 pandemic has changed seasonal patterns of mortality (at least this is the presumption here). I investigate seasonal excess mortality using a simple linear regression model.
@@ -74,3 +74,48 @@ The OLS model essentially
 y_i = \beta_0 + \beta_1 w_i + u_i,
 ```
 where w is the ISO week. Thus, the average mortality for each week from 2016 to 2019 serves as the baseline here.
+
+## Prediction
+
+I use the the "pre-Covid" baseline model to make predictions for both periods (pre-Covid and Covid).
+
+```
+# Prediction baseline
+pred = predict(reg,newdata = df_pre)
+pred_pre = data.frame(cbind(pred,df_pre))
+pred_pre$date = paste0(pred_pre$y, "-", sprintf("%02d", as.numeric(pred_pre$w)))
+pred_pre = pred_pre[order(pred_pre$date),]
+plot(pred_pre$v)
+lines(pred_pre$pred, col="blue")
+
+# Prediction "post" on baseline
+pred = predict(reg,newdata = df_post)
+pred_post = data.frame(cbind(pred,df_post))
+pred_post$date = paste0(pred_post$y, "-", sprintf("%02d", as.numeric(pred_post$w)))
+pred_post = pred_post[order(pred_post$date),]
+plot(pred_post$v)
+lines(pred_post$pred, col="blue")
+```
+
+Now I cbind both predictions together and calculate the excess mortality, which is the actual mortality minus the expected mortality based on the baseline model for 2016 to 2019.
+
+```
+# Excess mortality based on baseline
+all = rbind(pred_pre, pred_post)
+all$excess = all$v - all$pred
+all$n = seq(1,nrow(all))
+all$date = as.Date(paste(all$y, all$w, 1, sep="-"), "%Y-%U-%u")
+```
+
+Finally, I plot the results.
+
+```
+plot(all$date, all$excess, type = "l", lty = 1, xaxt='n', xlab="", ylab="Excess MOrtality (rel. to 2016-2019)")
+abline(h=0, col="gray", lwd=1.5, lty=2)
+abline(v=as.numeric(as.Date("2020-03-15")), lwd=0.8, col='red', lty=2)
+axis.Date(1,at=all$date,labels=format(all$date,"%Y-%m"),las=2, cex.axis = 0.75)
+```
+
+## Results and Conclusion
+
+
