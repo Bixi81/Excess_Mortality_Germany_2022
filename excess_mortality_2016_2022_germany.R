@@ -80,6 +80,7 @@ abline(h=0, col="gray", lwd=1.8, lty=2)
 abline(v=as.numeric(as.Date("2020-03-15")), lwd=1.2, col='red', lty=2)
 axis.Date(1,at=all$date,labels=format(all$date,"%Y-%m"),las=2, cex.axis = 0.75)
 
+# Compare means 
 mean(all$excess[all$y<2020])
 mean(all$excess[all$y>=2020])
 
