@@ -70,7 +70,7 @@ summary(reg)
 ```
 
 The OLS model essentially 
-
 ```math
-y_i = \beta_0 + \beta_1 w_i + u_i
+y_i = \beta_0 + \beta_1 w_i + u_i,
 ```
+where w is the ISO week. Thus, the average mortality for each week from 2016 to 2019 serves as the baseline here.
